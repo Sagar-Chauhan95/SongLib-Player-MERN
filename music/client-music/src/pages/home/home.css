@@ -1,0 +1,74 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    perspective: 1500px; /* Adjust perspective for 3D effect */
+}
+
+.home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-style: preserve-3d; /* Preserve 3D transformations */
+    transform: rotateY(30deg); /* Adjust rotation for 3D effect */
+}
+
+/* Header styles */
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.header input {
+    width: 30%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 0 10px;
+}
+
+/* Table styles */
+.table {
+    width: 70%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.table th, .table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+/* Button styles */
+.btn {
+    padding: 10px 20px;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Audio player styles */
+.player {
+    width: 50%;
+    margin-top: 20px;
+}

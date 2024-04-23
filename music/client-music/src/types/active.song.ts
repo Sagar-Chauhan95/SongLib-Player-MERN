@@ -1,0 +1,1 @@
+export default interface ActiveSong { songUrl: string, header: string; };
