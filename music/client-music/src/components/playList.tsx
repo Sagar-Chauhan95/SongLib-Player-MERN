@@ -1,7 +1,8 @@
 import { FaMinusCircle } from "react-icons/fa";
 import { FaCirclePlay } from "react-icons/fa6";
-import PlayList from '../types/playlist';
 import { memo } from "react";
+
+import PlayList from '../types/playlist';
 
 type Props = {
     playList: PlayList[];

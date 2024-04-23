@@ -10,8 +10,6 @@ import PlayList from '../types/playlist';
 
 type Props = {
     activeSong: ActiveSong;
-    onPreviousSong: () => void;
-    onNextSong: () => void;
     activeIndex: number;
     setActiveIndex: (num: number) => void;
     playList: PlayList[];
@@ -19,10 +17,9 @@ type Props = {
 };
 
 function MusicPlayer(props: Props) {
-    const { activeSong, onPreviousSong, onNextSong, activeIndex, setActiveIndex, playList, playSong } = props;
+    const { activeSong, activeIndex, setActiveIndex, playList, playSong } = props;
     const [ image, setImage ] = useState(shuffle);
     const [ mode, setMode ] = useState('shuffle');
-    const [ playButtonClicked, setPlayButtonClicked ] = useState(false);
 
     const changeImage = () => {
         switch (mode) {
@@ -34,28 +31,17 @@ function MusicPlayer(props: Props) {
             case 'single-loop':
                 setMode('loop');
                 setImage(loop);
-                return ((activeIndex + 1) % playList.length);
-
-            // onNextS  ong;
-            // playSong((activeIndex + 1) % playList.length);
+                break;
 
             case 'loop':
                 setMode('shuffle');
                 setImage(shuffle);
-                return (Math.floor(Math.random() * playList.length));
-            // playSong(Math.floor(Math.random() * playList.length));
-
+                break;
         };
         console.log("current mode is: ", mode);
     };
 
-
     const previousSong = () => {
-        // let newIndex = activeIndex - 1;
-        // if (newIndex < 0) {
-        //     newIndex = playList.length - 1;
-        // }
-
         switch (mode) {
             case "shuffle":
                 setActiveIndex(Math.floor(Math.random() * playList.length));
@@ -63,7 +49,6 @@ function MusicPlayer(props: Props) {
                 break;
             case 'single-loop':
                 break;
-
 
             case 'loop':
                 setActiveIndex((activeIndex + 1) % playList.length);
@@ -73,11 +58,6 @@ function MusicPlayer(props: Props) {
     };
 
     const nextSong = () => {
-        // let newIndex = activeIndex - 1;
-        // if (newIndex < 0) {
-        //     newIndex = playList.length - 1;
-        // }
-
         switch (mode) {
             case "shuffle":
                 setActiveIndex(Math.floor(Math.random() * playList.length));
@@ -86,12 +66,10 @@ function MusicPlayer(props: Props) {
             case 'single-loop':
                 break;
 
-
             case 'loop':
                 setActiveIndex((activeIndex + 1) % playList.length);
                 playSong((activeIndex + 1) % playList.length);
                 break;
-
         }
 
     };

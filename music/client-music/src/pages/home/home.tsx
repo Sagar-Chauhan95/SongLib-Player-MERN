@@ -1,6 +1,5 @@
-import { KeyboardEvent, MouseEvent, useCallback, useEffect, useState } from 'react';
+import { KeyboardEvent, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Dropdown from 'react-bootstrap/Dropdown';
 
 import { useMediaQuery } from 'react-responsive';
 
@@ -14,8 +13,6 @@ import ActiveSong from '../../types/active.song';
 import MusicPlayer from '../../components/audioBar';
 import YourPlayList from '../../components/playList';
 import SuggestedSong from '../../components/suggestedSong';
-import { DropdownButton } from 'react-bootstrap';
-
 
 export default function Home() {
     const [ songs, setSongs ] = useState<Song[]>([]);
@@ -30,7 +27,6 @@ export default function Home() {
         { minDeviceWidth: 1224 },
         { deviceWidth: 1600 }
     );
-
 
     async function getSuggestedSongsList() {
         const response = await serviceProvider.getAllsongs();
@@ -75,8 +71,6 @@ export default function Home() {
 
         } else {
             getSuggestedSongsList();
-
-
         }
     };
 
@@ -88,7 +82,7 @@ export default function Home() {
                 setPlayList(response.data);
             }
         } catch (error) {
-            console.log("Song already on playlist");  // add this to UI
+            console.log("Song already on playlist");
         }
     };
 
@@ -121,25 +115,7 @@ export default function Home() {
         }
     };
 
-    const previousSong = () => {
-        let newIndex = activeIndex - 1;
-        if (newIndex < 0) {
-            newIndex = playList.length - 1;
-        }
-        setActiveIndex(newIndex);
-        playSong(newIndex);
-    };
-
-    const nextSong = () => {
-        let newIndex = activeIndex + 1;
-        if (newIndex >= playList.length) {
-            newIndex = 0;
-        }
-        setActiveIndex(newIndex);
-        playSong(newIndex);
-    };
     const [ playListMode, setPlayListMode ] = useState<boolean>(false);
-
 
     const logout = () => {
         if (window.confirm("Sure wanna logout?")) {
@@ -184,14 +160,10 @@ export default function Home() {
             />
 
             <MusicPlayer activeSong={ activeSong }
-                onNextSong={ nextSong }
-                onPreviousSong={ previousSong }
                 activeIndex={ activeIndex }
                 setActiveIndex={ setActiveIndex }
                 playList={ playList }
                 playSong={ playSong }
-
-
             />
         </div >
     );

@@ -1,6 +1,7 @@
 import { IoAddCircle } from "react-icons/io5";
-import Song from '../types/song';
 import { memo } from "react";
+
+import Song from '../types/song';
 
 type Props = {
     songs: Song[],
